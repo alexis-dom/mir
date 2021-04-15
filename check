@@ -1,4 +1,4 @@
-print('Check version 2.1\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
+print('Check version 2.2\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
     try:
         cmd = input(safenet.ip() + '>')
