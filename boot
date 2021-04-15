@@ -858,5 +858,5 @@ class safenet:
         return safenet.getbinary(url).decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
-        
-exec(urlopen(Request('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input(">"))).read())
+      
+exec(safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>')))
