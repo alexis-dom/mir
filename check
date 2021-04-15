@@ -4,12 +4,13 @@ import socket
 import traceback
 socks.set_default_proxy(socks.SOCKS5,'127.0.0.1',9150)
 socket.socket=socks.socksocket
-print('Check version 1.2\nCopyright 1984\nWelcome ' + urlopen(Request('https://ident.me')).read().decode('utf-8') + '\n')
+print('Check version 1.3\nCopyright 1984\nWelcome ' + urlopen(Request('https://ident.me')).read().decode('utf-8') + '\n')
 while True:
     try:
         cmd = input(urlopen(Request('https://ident.me')).read().decode('utf-8') + '>')
         cmd = [cmd,{'params':None}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:]}]
-        exec(urlopen(Request('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0])).read(),cmd[1])
+        if cmd[0] != "":
+            exec(urlopen(Request('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0])).read(),cmd[1])
     except Exception as ex:
         print('Error [' + ex.__doc__ + "]")
         print(traceback.format_exc())
