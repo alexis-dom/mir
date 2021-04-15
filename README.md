@@ -11,3 +11,12 @@
       [boot.py](https://raw.githubusercontent.com/alexis-dom/mir/main/boot)
    3. Run boot.py
    4. type check
+
+### Troubleshooting
+
+Most of the errors you will get is because you are not currently running Tor. 
+You must have Tor browser running, or else you won't be able to use MIR.
+
+#### Contact
+
+Mastodon: @alexis@mas.to
