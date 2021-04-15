@@ -1,11 +1,11 @@
 import traceback
 
 def safenet_version():
-    return "2.8"
+    return "2.9"
 
 setattr(safenet,'version',safenet_version)
 
-print('Check version 2.8\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
+print('Check version ' + safenet.version() + '\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
     try:
         cmd = input(safenet.ip() + '>')
