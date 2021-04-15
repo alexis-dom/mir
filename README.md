@@ -1,5 +1,12 @@
 # Welcome to MIR
 
+## What's MIR?
+
+MIR is a small project that I am working on, that executes python scripts hosted on GitHub, using Tor as a Proxy.
+Every HTTP request that Python makes, goes thru the Onion Network.
+
+Our main goal is to provide some basic tools, that protects your Internet Identity, and can be run on any public computer without using admin rights.
+
 ## First steps
 
 1. Download and install Tor
