@@ -13,15 +13,8 @@ import socket
 import struct
 import sys
 
-__version__ = "1.7.1"
-
-
-if os.name == "nt" and sys.version_info < (3, 0):
-    try:
-        import win_inet_pton
-    except ImportError:
-        raise ImportError(
-            "To run PySocks on Windows you must install win_inet_pton")
+#import win_inet_pton
+#"To run PySocks on Windows you must install win_inet_pton")
 
 log = logging.getLogger(__name__)
 
