@@ -3,13 +3,13 @@ from urllib import request, parse
 
 class safenet_ex:
     def version():
-        return "2.11"
+        return "2.12"
     def get(url):
         return safenet.getbinary(url).decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
-        return urlopen(Request(url,data=parse.urlencode(datap).encode())).read()
+        return urlopen(Request(url,method="POST",data=parse.urlencode(datap).encode())).read()
 
 setattr(safenet,'version',safenet_ex.version)
 setattr(safenet,'get',safenet_ex.get)
