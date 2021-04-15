@@ -861,12 +861,15 @@ class safenet:
         return safenet.get('https://ident.me')
 
 print('Check version 2.0\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
-while True:
+noError = True
+while noError
     try:
         cmd = input(safenet.ip() + '>')
         cmd = [cmd,{'params':None,'safenet':safenet}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:],'safenet':safenet}]
         if cmd[0] != '':
             exec(safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0]),cmd[1])
     except Exception as ex:
+        noError = False
         print('Error [' + ex.__doc__ + ']')
         print(traceback.format_exc())
+        
