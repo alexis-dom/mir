@@ -7,7 +7,7 @@ while True:
         cmd = [cmd,{'params':None,'safenet':safenet}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:],'safenet':safenet}]
         if cmd[0] != '':
             exec(safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0]),cmd[1])
-    except Exception as ex:
-        print('Error [' + ex.__doc__ + ']')
+    except Exception as e:
+        print('Error [' + e.__doc__ + ']')
         print(traceback.format_exc())
         
