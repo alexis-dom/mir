@@ -1,16 +1,20 @@
 import traceback
+from urllib import request, parse
 
 class safenet_ex:
     def version():
-        return "2.10"
+        return "2.11"
     def get(url):
         return safenet.getbinary(url).decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
+    def post(url,datap):
+        return urlopen(Request(url,data=parse.urlencode(datap).encode())).read()
 
 setattr(safenet,'version',safenet_ex.version)
 setattr(safenet,'get',safenet_ex.get)
 setattr(safenet,'ip',safenet_ex.ip)
+setattr(safenet,'post',safenet_ex.post)
 
 print('Check version ' + safenet.version() + '\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
