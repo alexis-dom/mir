@@ -862,7 +862,7 @@ class safenet:
 
 print('Check version 2.0\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 noError = True
-while noError
+while noError:
     try:
         cmd = input(safenet.ip() + '>')
         cmd = [cmd,{'params':None,'safenet':safenet}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:],'safenet':safenet}]
