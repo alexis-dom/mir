@@ -1,4 +1,5 @@
 import traceback
+from functools import wraps
 
 def add_method(cls):
     def decorator(func):
@@ -11,9 +12,9 @@ def add_method(cls):
 
 @add_method(safenet)
 def version():
-    return "2.6"
+    return "2.7"
 
-print('Check version 2.6\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
+print('Check version 2.7\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
     try:
         cmd = input(safenet.ip() + '>')
