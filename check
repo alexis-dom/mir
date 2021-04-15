@@ -2,7 +2,7 @@ print('Check version 2.1\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
     try:
         cmd = input(safenet.ip() + '>')
-        cmd = [cmd,{'params':None}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:]}]
+        cmd = [cmd,{'params':None,'safenet':safenet}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:],'safenet':safenet}]
         if cmd[0] != '':
             exec(safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0]),cmd[1])
     except Exception as ex:
