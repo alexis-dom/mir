@@ -1,6 +1,5 @@
 import traceback
-
-print('Check version 2.3\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
+print('Check version 2.4\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
     try:
         cmd = input(safenet.ip() + '>')
@@ -8,6 +7,5 @@ while True:
         if cmd[0] != '':
             exec(safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0]),cmd[1])
     except Exception as e:
-        print('Error [' + e.__doc__ + ']')
-        print(traceback.format_exc())
+        print('Error [' + e.__doc__ + ']\n' + traceback.format_exc())
         
