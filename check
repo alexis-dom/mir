@@ -1,4 +1,9 @@
 import traceback
+
+@add_method(safenet)
+def version():
+    return "1.0"
+
 print('Check version 2.4\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
     try:
