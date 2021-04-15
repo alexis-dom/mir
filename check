@@ -2,14 +2,21 @@ import traceback
 from urllib import request, parse
 
 class safenet_ex:
+    hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
+       'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+       'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
+       'Accept-Encoding': 'none',
+       'Accept-Language': 'en-US,en;q=0.8',
+       'Connection': 'keep-alive'}
+
     def version():
-        return "2.12"
+        return "2.13"
     def get(url):
         return safenet.getbinary(url).decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
-        return urlopen(Request(url,method="POST",data=parse.urlencode(datap).encode())).read()
+        return urlopen(Request(url,headers=safenet_ex.hdr,method="POST",data=parse.urlencode(datap).encode())).read()
 
 setattr(safenet,'version',safenet_ex.version)
 setattr(safenet,'get',safenet_ex.get)
