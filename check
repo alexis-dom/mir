@@ -16,7 +16,7 @@ class safenet:
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
-        return urlopen(Request(url,headers=safenet.hdr,method='POST0,data=parse.urlencode(datap).encode())).read().decode('utf-8')
+        return urlopen(Request(url,headers=safenet.hdr,method='POST',data=parse.urlencode(datap).encode())).read().decode('utf-8')
 
 print('Check version ' + safenet.version() + '\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
