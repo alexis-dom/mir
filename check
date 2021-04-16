@@ -1,6 +1,6 @@
 import traceback
 from urllib import request, parse
-import urllib.request
+from urllib.request import build_opener, HTTPCookieProcessor, Request
 import gzip
 
 class safenet:
@@ -12,8 +12,20 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.03f'
+        return '4.03g'
     def get(url):
+        opener = build_opener(HTTPCookieProcessor())
+        request = Request(url,headers=safenet.hdr)
+        res = opener.open(request, timeout=30)
+        result = None
+        if res.info().get('Content-Encoding') == 'gzip':
+            result = gzip.decompress(res.read())
+        elif res.info().get('Content-Encoding') == 'deflate':
+            result = res.read()
+        else:
+            result = res.read()
+        return result.decode('utf-8')
+    def get2(url):
         print('url ori: ' + url)
         res = urlopen(Request(url,headers=safenet.hdr))
         print('[DONE]')
