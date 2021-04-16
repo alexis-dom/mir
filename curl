@@ -1,1 +1,9 @@
-print(safenet.get(params))
+import traceback
+
+try:
+  res = safenet.getx(params)
+  print(res[2].read().decode('ISO-8859-1'))
+except Exception as e:
+        print('Error [' + e.__doc__ + ']\n' + traceback.format_exc())
+        print(res[0])
+        print(res[1])
