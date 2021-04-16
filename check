@@ -12,10 +12,10 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.03d'
+        return '4.03e'
     def get(url):
-        res = urlopen(Request(url,headers=safenet.hdr))
         print('url: ' + res.url)
+        res = urlopen(Request(url,headers=safenet.hdr))
         print('reason: ' + res.reason)
         print('status: ' + str(res.status))
         result = None
