@@ -28,6 +28,10 @@ You must have Tor browser running, or else you won't be able to use MIR.
 
 If the site you are trying to reach is behind CloudFlare, you will get 403 errors, no matter what.
 Still need to figure it out if it is because of urllib HTTP/1.1 requests, or because we are using Tor Proxy.
+So far, you won't be able to use;
+   http://tinyurl.com
+   https://api.keyvalue.xyz/ping
+   http://ifconfig.co/
 
 #### Contact
 
