@@ -11,9 +11,13 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '3.21'
+        return '3.23'
     def get(url):
-        return str(urlopen(Request(url,headers=safenet.hdr)).read())
+        res = urlopen(Request(url,headers=safenet.hdr)).read()
+        try:
+            return res.decode('utf-8')
+        except:
+            return str(len(res))
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
