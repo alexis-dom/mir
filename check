@@ -10,9 +10,9 @@ class safenet_ex:
        'Connection': 'keep-alive'}
 
     def version():
-        return "2.14"
+        return "2.15"
     def get(url):
-        return safenet.getbinary(url).decode('utf-8')
+        return urlopen(Request(url)).read().decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
