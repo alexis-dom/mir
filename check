@@ -12,11 +12,11 @@ class safenet:
 
     def version():
         return '3.06'
-    def get(url):
-        return safenet.getx(url)[1]
     def getx(url):
         with urlopen(Request(url,headers=safenet.hdr)) as f:
             return[f.info(),f.read().decode('ISO-8859-1')]
+    def get(url):
+        return safenet.getx(url)[1]
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
