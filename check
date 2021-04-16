@@ -33,3 +33,4 @@ while True:
     except Exception as e:
         print('Error [' + e.__doc__ + ']\n' + traceback.format_exc())
         print(res[0])
+        print(res[0].items())
