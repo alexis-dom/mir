@@ -1,23 +1,28 @@
 import traceback
 from urllib import request, parse
 import urllib.request
+import gzip
 
 class safenet:
     hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-       'Accept-Encoding': 'none',
+       'Accept-Encoding': 'gzip, deflate',
        'Accept-Language': 'en-US,en;q=0.5',
        'Upgrade-Insecure-Requests': '1',
        'Connection': 'keep-alive'}
 
     def version():
-        return '3.24'
+        return '4.01'
     def get(url):
         res = urlopen(Request(url,headers=safenet.hdr)).read()
-        try:
-            return res.decode('utf-8')
-        except:
-            return str(len(res))
+        result = None
+        if res.info().get('Content-Encoding') == 'gzip':
+            result = gzip.decompress(res.read())
+        elif res.info().get('Content-Encoding') == 'deflate':
+            result = res.read()
+        else:
+            result = res.read()
+        return result.decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
