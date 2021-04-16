@@ -1,11 +1,2 @@
-import traceback
+print(safenet.get(params))
 
-res = safenet.getx(params)
-if res[2] != None:
-  print(res[2])
-else:
-  print('Curl Error [' + res[3].__doc__ + ']\n' + traceback.format_exc())
-  print(res[0])
-  print(res[1])
-
-        
