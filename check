@@ -28,24 +28,6 @@ class safenet:
             return result.decode('utf-8')
         except Exception as e2:
             return result.decode('ISO-8859-1')
-    def get2(url):
-        print('url ori: ' + url)
-        res = urlopen(Request(url,headers=safenet.hdr))
-        print('[DONE]')
-        print('url tra: ' + res.url)
-        print('reason: ' + res.reason)
-        print('status: ' + str(res.status))
-        result = None
-        if res.info().get('Content-Encoding') == 'gzip':
-            result = gzip.decompress(res.read())
-        elif res.info().get('Content-Encoding') == 'deflate':
-            result = res.read()
-        else:
-            result = res.read()
-        try:
-            return result.decode('utf-8')
-        except Exception as e2:
-            return result.decode('ISO-8859-1')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
