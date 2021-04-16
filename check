@@ -6,13 +6,13 @@ import gzip
 class safenet:
     hdr = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0',
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-       'Accept-Encoding': 'gzip, deflate',
+       'Accept-Encoding': 'gzip, deflate, br',
        'Accept-Language': 'en-US,en;q=0.5',
        'Upgrade-Insecure-Requests': '1',
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.01'
+        return '4.02'
     def get(url):
         res = urlopen(Request(url,headers=safenet.hdr))
         result = None
