@@ -10,12 +10,12 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '3.11'
+        return '3.12'
     def getx(url):
         with urlopen(Request(url,headers=safenet.hdr)) as f:
-            return[f.headers,[f.url,f.status,f.reason],f.read().decode('ISO-8859-1')]
+            return[f.headers,[f.url,f.status,f.reason],f]
     def get(url):
-        return safenet.getx(url)[2]
+        return safenet.getx(url)[2].read().decode('ISO-8859-1')
     def ip():
         return safenet.get('https://ident.me')
     def post(url,datap):
@@ -27,8 +27,8 @@ while True:
         cmd = input(safenet.ip() + '>')
         cmd = [cmd,{'params':None,'safenet':safenet}] if cmd.find(' ') == -1 else [cmd[0:cmd.find(' ')],{'params':cmd[cmd.find(' ') + 1:],'safenet':safenet}]
         if cmd[0] != '':
-            res = safenet.getx('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0])
-            exec(res[2],cmd[1])
+            res = safenet.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + cmd[0])
+            exec(res,cmd[1])
     except Exception as e:
         print('Error [' + e.__doc__ + ']\n' + traceback.format_exc())
         print(res[0])
