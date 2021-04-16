@@ -12,7 +12,7 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.04'
+        return '4.05'
     def get(url):
         opener = build_opener(HTTPCookieProcessor())
         request = Request(url,headers=safenet.hdr)
@@ -41,7 +41,7 @@ class safenet:
             result = res.read()
         try:
             return result.decode('utf-8')
-        except:
+        except Exception as e2:
             return result.decode('ISO-8859-1')
     def ip():
         return safenet.get('https://ident.me')
