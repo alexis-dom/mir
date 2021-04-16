@@ -14,8 +14,9 @@ class safenet:
     def version():
         return '4.03e'
     def get(url):
-        print('url: ' + res.url)
+        print('url ori: ' + url)
         res = urlopen(Request(url,headers=safenet.hdr))
+        print('url tra: ' + res.url)
         print('reason: ' + res.reason)
         print('status: ' + str(res.status))
         result = None
