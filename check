@@ -11,7 +11,7 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '3.07'
+        return '3.08'
     def getx(url):
         with urlopen(Request(url,headers=safenet.hdr)) as f:
             return[f.info(),f.read().decode('ISO-8859-1')]
@@ -32,4 +32,4 @@ while True:
             exec(res[1],cmd[1])
     except Exception as e:
         print('Error [' + e.__doc__ + ']\n' + traceback.format_exc())
-        print(res[0].dict)
+        print(res[0])
