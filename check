@@ -14,7 +14,7 @@ class safenet:
     def version():
         return '4.01'
     def get(url):
-        res = urlopen(Request(url,headers=safenet.hdr)).read()
+        res = urlopen(Request(url,headers=safenet.hdr))
         result = None
         if res.info().get('Content-Encoding') == 'gzip':
             result = gzip.decompress(res.read())
