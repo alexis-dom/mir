@@ -12,7 +12,7 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.09'
+        return '4.10'
     def forres(res):
         result = None
         if res.info().get('Content-Encoding') == 'gzip':
