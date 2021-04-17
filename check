@@ -12,11 +12,8 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.07'
-    def get(url):
-        opener = build_opener(HTTPCookieProcessor())
-        request = Request(url,headers=safenet.hdr)
-        res = opener.open(request, timeout=30)
+        return '4.08'
+    def format(res):
         result = None
         if res.info().get('Content-Encoding') == 'gzip':
             result = gzip.decompress(res.read())
@@ -28,10 +25,14 @@ class safenet:
             return result.decode('utf-8')
         except Exception as e2:
             return result.decode('ISO-8859-1')
+    def get(url):
+        opener = build_opener(HTTPCookieProcessor())
+        request = Request(url,headers=safenet.hdr)
+        return format(opener.open(request, timeout=30))
     def ip():
         return safenet.get('https://v4.ident.me/')
     def post(url,datap):
-        return urlopen(Request(url,headers=safenet.hdr,method='POST',data=parse.urlencode(datap).encode())).read().decode('utf-8')
+        return format(urlopen(Request(url,headers=safenet.hdr,method='POST',timeout=30,data=parse.urlencode(datap).encode())))
 
 print('Check version ' + safenet.version() + '\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
