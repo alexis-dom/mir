@@ -28,11 +28,11 @@ class safenet:
     def get(url):
         opener = build_opener(HTTPCookieProcessor())
         request = Request(url,headers=safenet.hdr)
-        return forres(opener.open(request, timeout=30))
+        return safenet.forres(opener.open(request, timeout=30))
     def ip():
         return safenet.get('https://v4.ident.me/')
     def post(url,datap):
-        return forres(urlopen(Request(url,headers=safenet.hdr,method='POST',timeout=30,data=parse.urlencode(datap).encode())))
+        return safenet.forres(urlopen(Request(url,headers=safenet.hdr,method='POST',timeout=30,data=parse.urlencode(datap).encode())))
 
 print('Check version ' + safenet.version() + '\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
