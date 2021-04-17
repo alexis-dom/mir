@@ -12,7 +12,7 @@ class safenet:
        'Connection': 'keep-alive'}
 
     def version():
-        return '4.10'
+        return '4.11'
     def forres(res):
         result = None
         if res.info().get('Content-Encoding') == 'gzip':
@@ -32,7 +32,7 @@ class safenet:
     def ip():
         return safenet.get('https://v4.ident.me/')
     def post(url,datap):
-        return safenet.forres(urlopen(Request(url,headers=safenet.hdr,method='POST',data=parse.urlencode(datap).encode())))
+        return safenet.forres(urlopen(Request(url,headers=safenet.hdr,method='POST')))
 
 print('Check version ' + safenet.version() + '\nCopyright 1984\nWelcome ' + safenet.ip() + '\n')
 while True:
