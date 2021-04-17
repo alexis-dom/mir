@@ -233,5 +233,5 @@ class torsoc(_BaseSocket):
          password) = self.proxy
         proxy_port = proxy_port or DEFAULT_PORTS.get(proxy_type)
         return proxy_addr, proxy_port
-exec(torsoc.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('MIR Boot 1.03\nWelcome ' + torsoc.get('https://api.ipify.org/') + '\n>')))
+exec(torsoc.get('https://raw.githubusercontent.com/alexis-dom/mir/main/' + input('MIR Boot 1.04\nWelcome ' + torsoc.get('https://v4.ident.me/') + '\n>')))
 
